@@ -6,7 +6,7 @@
 	<title>LOSE</title>
 	</head>
 	<body>
-		<div>Teachable Machine Pose Model</div>
+	<div>Teachable Machine Pose Model</div>
 <button type="button" onclick="init()">Start</button>
 <div><canvas id="canvas"></canvas></div>
 <div id="label-container"></div>
@@ -60,13 +60,18 @@
         const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
         // Prediction 2: run input through teachable machine classification model
         const prediction = await model.predict(posenetOutput);
+
+        <img id="image_place" src="image1.jpg">
+        let img=document.getElementById("image_place");
+        let idx=1;
         if(prediction[0].probability.toFixed(2)>0.5){
-        	img.src="image1.jpg";
+        	idx=1;
         }else if(prediction[1].probability.toFixed(2)>0.5){
-        	img.src="image2.jpg";
+        	idx=3;
         }else if(prediction[2].probability.toFixed(2)>0.5){
-        	img.src="image3.jpg";
+        	idx=2;
         }
+        img.src="image"+idx+".jpg";
 
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
