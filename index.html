@@ -6,6 +6,7 @@
 	<title>LOSE</title>
 	</head>
 	<body>
+	<img id="image_place" src="image1.jpg">
 	<div>Teachable Machine Pose Model</div>
 <button type="button" onclick="init()">Start</button>
 <div><canvas id="canvas"></canvas></div>
@@ -61,7 +62,6 @@
         // Prediction 2: run input through teachable machine classification model
         const prediction = await model.predict(posenetOutput);
 
-        <img id="image_place" src="image1.jpg">
         let img=document.getElementById("image_place");
         let idx=1;
         if(prediction[0].probability.toFixed(2)>0.5){
